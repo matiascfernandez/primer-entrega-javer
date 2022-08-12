@@ -113,6 +113,22 @@ const productos = PRODUCTOS_JAVER.map(producto => new Producto(
     producto.categoria
 ));
 
+const divProductos = document.getElementById("divProductos")
+
+productos.forEach((producto) => {
+    divProductos.innerHTML +=`
+        <div class="card">
+                <div class="card-body">
+                <h5 class="card-title">${producto.nombre}</h5>
+                <p class="card-text">ID:${producto.id}</p>
+                <p class="card-text">Precio:${producto.precio}</p>
+                <p class="card-text">Descripcion:${producto.descripcion}</p>
+                <p class="card-text">Categoria:${producto.categoria}</p>
+                </div>
+            </div>`
+})
+
+    /*
 
 agregarAlCarritoPorId(productos)
 agregarAlCarritoPorId(productos)
@@ -123,6 +139,16 @@ alert(`abre la consola para ver tu compra`)
 mostrarCarrito(carrito)
 console.log('TOTAL: ', obtenerTotal(carrito))
 
+<div class="productos">
+            <p>Id: ${producto.id}</p>
+            <p> Nombre: ${producto.nombre}</p>
+            <p>Precio: ${producto.precio}</p>
+            <p>Talle: ${producto.precio}</p>
+            <p>Descripcion: ${producto.descripcion}</p>
+            <p>Img: ${producto.img}</p>
+            <p>Categoria: {producto.categoria}</p>
+        </div>`
 
 
+*/
 

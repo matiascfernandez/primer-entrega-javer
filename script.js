@@ -1,3 +1,48 @@
+const boton1 = document.querySelector("#boton1")
+class User {
+    constructor(username, email, password) {
+        this.username = username
+        this.email = email
+        this.password = password
+    }
+}
+
+const idForm = document.getElementById("idForm")
+const botonUsers = document.getElementById("botonUsers")
+const divUsers = document.getElementById("divUsers")
+
+const users = []
+
+idForm.addEventListener('submit', (e) => {
+    e.preventDefault()
+    const username = document.getElementById("username").value
+    const email = document.getElementById("email").value
+    const password = document.getElementById("password").value
+
+    const user = new User(username, email, password)
+
+    users.push(user)
+
+    idForm.reset()
+    console.log(users)
+})
+
+
+botonUsers.addEventListener('click', () => {
+    divUsers.innerHTML = ""
+    users.forEach((user, indice) => {
+        divUsers.innerHTML += `
+            <div class="card" id="user${indice}" style="width: 18rem;margin:3px;">
+                <div class="card-body">
+                    <h5 class="card-title">${user.username}</h5>
+                    <p class="card-text">${user.email}</p>
+                </div>
+            </div>
+        
+        `
+    })
+})
+
 const PRODUCTOS_JAVER = [
     {
         id: '1',
@@ -64,16 +109,18 @@ class Producto {
         this.descripcion = descripcion;
         this.img = img;
         this.categoria = categoria;
+        
     }
+    /*
     obtenerInfoID() {
         return `ID: ${this.id} | ${this.nombre} - ${this.precio}`;
     }
     obtenerAviso(emoji) {
         return `${this.nombre} >>>>> sale $${this.precio}${emoji}`;
-    }
+    }*/
 } 
 
-
+/*
 const carrito = [];
 
 const obtenerInfoProductos = (productosLista) => {
@@ -95,6 +142,7 @@ const mostrarCarrito = (carritoDeProductos) => {
     });
 }
 
+
 const obtenerTotal = (productosLista) => {
     let total = 0;
     productosLista.forEach((producto) => {
@@ -102,6 +150,7 @@ const obtenerTotal = (productosLista) => {
     });
     return total;
 }
+*/
 
 const productos = PRODUCTOS_JAVER.map(producto => new Producto(
     producto.id,
@@ -113,7 +162,10 @@ const productos = PRODUCTOS_JAVER.map(producto => new Producto(
     producto.categoria
 ));
 
-const divProductos = document.getElementById("divProductos")
+
+
+
+
 
 productos.forEach((producto) => {
     divProductos.innerHTML +=`
@@ -124,9 +176,11 @@ productos.forEach((producto) => {
                 <p class="card-text">Precio:${producto.precio}</p>
                 <p class="card-text">Descripcion:${producto.descripcion}</p>
                 <p class="card-text">Categoria:${producto.categoria}</p>
+                <button type="submit" id="agregarCarrito"> "Posible boton sin dinamica para el carrito" </button>
                 </div>
             </div>`
 })
+
 
     /*
 
